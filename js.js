@@ -63,6 +63,7 @@ const stuffTable = {
     
     //Создаем заголовки таблицы
     renderTableHead (table) {
+        console.log(table);
         let row = table.getElementsByTagName('Row');
         console.log(row);
     },
