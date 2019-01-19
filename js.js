@@ -15,7 +15,10 @@ document.getElementById('test').addEventListener('click', function () {
                 if (xhr.status !== 200) {
                         console.log('Ошибка в процессе получения данных', xhr.status, xhr.statusText);
                     } else {
-                        console.log('ok', xhr.responseText);
+                        let row = xhr.responseText.querySelector('Row');
+                        
+                        
+                        console.log(row);
                         }
                 };
 
