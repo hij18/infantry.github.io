@@ -15,45 +15,15 @@ document.getElementById('test').addEventListener('click', function () {
                 if (xhr.status !== 200) {
                         console.log('Ошибка в процессе получения данных', xhr.status, xhr.statusText);
                     } else {
-                        let row = xhr.responseText.querySelector('Row');
+                        let table = xhr.getElementsByTagName('Table');
                         
                         
-                        console.log(row);
-                        }
+                        console.log(table);
+                    }
                 };
 
                 xhr.send();
             });
-
-/*
-window.onload = function () {
-    let xhr = new XMLHttpRequest ();
-    xhr.open ('GET', './collaborators.xml', true);
-    xhr.send();
-    
-    xhr.onreadystatechange = function () {
-       if (xhr.readyState !== 4) {
-           return;
-       };
-        console.log(xhr.readyState);
-        
-    };
-    
-    if (xhr.status !== 200) {
-        console.log(xhr.status);
-        console.log(xhr);
-
-    } else {
-        
-        let row = xhr.querySelector(row);
-        
-        console.log('Все ок');
-    }
-    
-    
-}
-*/
-
 
 //Объект, содержащий таблицу персонала
 const stuffTable = {
