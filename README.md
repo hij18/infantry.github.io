@@ -1,2 +1,0 @@
-# infantry.github.io
-test
