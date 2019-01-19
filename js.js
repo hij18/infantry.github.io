@@ -29,14 +29,17 @@ document.getElementById('test').addEventListener('click', function () {
 //Объект, содержащий таблицу персонала
 const stuffTable = {
     settings: {
-        tableElement: document.getElementById('stuff'),
+        tableElement: document.getElementById('tableBody'),
+        tableHead: document.getElementById('tableHead'),
         rowInTable: 10,
         cellInTable: 10,
         rowOnPage: 10,
     },
  //Строит таблицу по заданым параметрам
     init () {
-        this.renderTable ();
+        this.takeDataFromXML ();
+        this.renderTableHead (table);
+        this.renderTable (table);
         
         document
         .getElementById('tableSize')
@@ -78,6 +81,38 @@ const stuffTable = {
     clearTable () {
         this.settings.tableElement.innerHTML = '';
     
+    },
+    
+    //Создаем заголовки таблицы
+    renderTableHead (tableData) {
+        console.log(tableData);
+        
+        let row = tableData.firstChild;
+        console.log(row);
+    },
+    
+    //
+    takeDataFromXML () {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', './collaborators.xml', true);
+        
+        xhr.onreadystatechange = function () {
+        console.log(xhr.readyState);
+                  
+            if(xhr.readyState !== 4) {
+                return; //Выход
+                }
+
+                if (xhr.status !== 200) {
+                        console.log('Ошибка в процессе получения данных', xhr.status, xhr.statusText);
+                    } else {
+                        let contentXML = xhr.responseXML;
+                        let table = contentXML.getElementsByTagName('Table');
+                    }
+                };
+
+                xhr.send();
+                return table;
     },
 };
 
