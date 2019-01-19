@@ -112,7 +112,7 @@ const stuffTable = {
                         return;
                     } 
                 let contentXML = xhr.responseXML;
-                this.table = contentXML.getElementsByTagName('Table');
+                Object.assign(this.table, contentXML.getElementsByTagName('Table'));
                 };
     },
 };
