@@ -15,7 +15,8 @@ document.getElementById('test').addEventListener('click', function () {
                 if (xhr.status !== 200) {
                         console.log('Ошибка в процессе получения данных', xhr.status, xhr.statusText);
                     } else {
-                        let table = xhr.getElementsByTagName('Table');
+                        let contentXML = xhr.responseXML;
+                        let table = contentXML.getElementsByTagName('Table');
                         
                         
                         console.log(table);
