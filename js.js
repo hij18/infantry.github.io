@@ -91,7 +91,7 @@ const stuffTable = {
     renderTableHead () {
         console.log(this.table);
         console.log(this);
-        let row = tableData.firstChild;
+        let row = this.table.getElementsByTagName('Table').firstChild;
         console.log(row);
     },
     
@@ -111,8 +111,7 @@ const stuffTable = {
                         console.log('Ошибка в процессе получения данных', xhr.status, xhr.statusText);
                         return;
                     } 
-                let contentXML = xhr.responseXML;
-                Object.assign(this.table, contentXML.getElementsByTagName('Table'));
+                this.table = xhr.responseXML;
                 };
     },
 };
