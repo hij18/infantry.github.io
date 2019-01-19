@@ -1,31 +1,5 @@
 "use strict";
 
-
-document.getElementById('test').addEventListener('click', function () {
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', './collaborators.xml', true);
-        
-    xhr.onreadystatechange = function () {
-        console.log(xhr.readyState);
-                  
-            if(xhr.readyState !== 4) {
-                return; //Выход
-                }
-
-                if (xhr.status !== 200) {
-                        console.log('Ошибка в процессе получения данных', xhr.status, xhr.statusText);
-                    } else {
-                        let contentXML = xhr.responseXML;
-                        let table = contentXML.getElementsByTagName('Table');
-                        
-                        
-                        console.log(table);
-                    }
-                };
-
-                xhr.send();
-            });
-
 //Объект, содержащий таблицу персонала
 const stuffTable = {
     settings: {
@@ -42,8 +16,8 @@ const stuffTable = {
  //Строит таблицу по заданым параметрам
     init () {
         this.takeDataFromXML ();
-        this.renderTableHead ();
-        this.renderTable ();
+        this.renderTableHead (this.takeDataFromXML ());
+        this.renderTable (this.takeDataFromXML ());
         
         document
         .getElementById('tableSize')
@@ -88,10 +62,8 @@ const stuffTable = {
     },
     
     //Создаем заголовки таблицы
-    renderTableHead () {
-        console.log(this.table);
-        console.log(this);
-        let row = this.table.getElementsByTagName('Table').firstChild;
+    renderTableHead (table) {
+        let row = table.getElementsByTagName('Row');
         console.log(row);
     },
     
@@ -111,7 +83,7 @@ const stuffTable = {
                         console.log('Ошибка в процессе получения данных', xhr.status, xhr.statusText);
                         return;
                     } 
-                this.table = xhr.responseXML;
+                return xhr.responseXML;
                 };
     },
 };
