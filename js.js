@@ -42,8 +42,8 @@ const stuffTable = {
  //Строит таблицу по заданым параметрам
     init () {
         this.takeDataFromXML ();
-        this.renderTableHead (table);
-        this.renderTable (table);
+        this.renderTableHead ();
+        this.renderTable ();
         
         document
         .getElementById('tableSize')
