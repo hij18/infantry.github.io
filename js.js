@@ -35,6 +35,10 @@ const stuffTable = {
         cellInTable: 10,
         rowOnPage: 10,
     },
+    //Место для хранения данных из XML
+    table: {     
+    },
+    
  //Строит таблицу по заданым параметрам
     init () {
         this.takeDataFromXML ();
@@ -84,9 +88,9 @@ const stuffTable = {
     },
     
     //Создаем заголовки таблицы
-    renderTableHead (tableData) {
-        console.log(tableData);
-        
+    renderTableHead () {
+        console.log(this.table);
+        console.log(this);
         let row = tableData.firstChild;
         console.log(row);
     },
@@ -108,10 +112,8 @@ const stuffTable = {
                         return;
                     } 
                 let contentXML = xhr.responseXML;
-                let table = contentXML.getElementsByTagName('Table');
-                return table;  
+                this.table = contentXML.getElementsByTagName('Table');
                 };
-      
     },
 };
 
