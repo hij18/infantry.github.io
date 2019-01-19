@@ -95,7 +95,7 @@ const stuffTable = {
     takeDataFromXML () {
         let xhr = new XMLHttpRequest();
         xhr.open('GET', './collaborators.xml', true);
-        
+        xhr.send();
         xhr.onreadystatechange = function () {
         console.log(xhr.readyState);
                   
@@ -105,14 +105,13 @@ const stuffTable = {
 
                 if (xhr.status !== 200) {
                         console.log('Ошибка в процессе получения данных', xhr.status, xhr.statusText);
-                    } else {
-                        let contentXML = xhr.responseXML;
-                        let table = contentXML.getElementsByTagName('Table');
-                    }
-                };
+                        return;
+                    } 
 
-                xhr.send();
-                return table;
+                };
+                let contentXML = xhr.responseXML;
+                let table = contentXML.getElementsByTagName('Table');
+                return table;        
     },
 };
 
