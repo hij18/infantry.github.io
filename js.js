@@ -107,11 +107,11 @@ const stuffTable = {
                         console.log('Ошибка в процессе получения данных', xhr.status, xhr.statusText);
                         return;
                     } 
-
-                };
                 let contentXML = xhr.responseXML;
                 let table = contentXML.getElementsByTagName('Table');
-                return table;        
+                return table;  
+                };
+      
     },
 };
 
