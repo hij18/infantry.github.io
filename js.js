@@ -13,7 +13,12 @@ const stuffTable = {
         table: null,
         //Колличество строк, которое сейчас выведено на экран
         currentNumOfRow: 0,
+        //Счетчик строк в цикле вывода таблицы
         countNumOfRow: 0,
+        //Колличесвто страниц таблицы с учетом строк на странице
+        namberOfPage: null,
+        currentPage: 1,
+        
         
     },
         
@@ -73,6 +78,7 @@ const stuffTable = {
             return;
         } 
         this.changeNumberOfRow(event.target.dataset.size);
+        this.changeNumberOfPage ();
         this.clearTable ();
         this.renderTable ();
     },
@@ -83,6 +89,9 @@ const stuffTable = {
             document.getElementById('next').disabled = true;
         }
         this.settings.currentNumOfRow += this.settings.rowOnPage;
+        his.settings.currentPage += this.settings.currentPage;
+        this.changeNumberOfPage ();
+        this.clearTable ();
         this.renderTable ();
     }, 
     
@@ -92,6 +101,9 @@ const stuffTable = {
             document.getElementById('prev').disabled = true;
         }
         this.settings.currentNumOfRow -= this.settings.rowOnPage;
+        this.settings.currentPage -= this.settings.currentPage;
+        this.changeNumberOfPage ();
+        this.clearTable ();
         this.renderTable ();
     }, 
     
@@ -105,6 +117,16 @@ const stuffTable = {
         this.settings.tableElement.innerHTML = '';
     
     },
+    
+    //Пересчитывает колличество страниц таблицы с персоналом
+    changeNumberOfPage () {
+        this.settings.namberOfPage = 500/this.settings.rowOnPage;
+        document
+        .getElementById('navAll')
+        .textContent = this.settings.namberOfPage;
+    },
+    
+
     
     //Создаем заголовки таблицы
     renderTableHead () {
@@ -120,7 +142,7 @@ const stuffTable = {
         }
     },
     
-    //
+    //Получаем данные из файла
     takeDataFromXML (callback) {
         let xhr = new XMLHttpRequest();
         xhr.open('GET', './collaborators.xml', true);
