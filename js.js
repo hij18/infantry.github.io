@@ -12,7 +12,7 @@ const stuffTable = {
         //Место для хранения данных из XML
         table: null,
         //Колличество строк, которое сейчас выведено на экран
-        currentNumOfRow: 0;
+        currentNumOfRow: 0,
         
     },
         
