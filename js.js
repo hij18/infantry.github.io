@@ -61,9 +61,9 @@ const stuffTable = {
     },
     
     //Создаем заголовки таблицы
-    renderTableHead (table) {
-        console.log(table);
-        let row = table.getElementsByTagName('Row');
+    renderTableHead () {
+        console.log(this.settings.table);
+        let row = this.settings.table.getElementsByTagName('Row');
         console.log(row);
     },
     
@@ -71,6 +71,7 @@ const stuffTable = {
     takeDataFromXML () {
         let xhr = new XMLHttpRequest();
         xhr.open('GET', './collaborators.xml', true);
+        xhr.send();
         xhr.onreadystatechange = function () {
         console.log(xhr.readyState);
                   
@@ -82,9 +83,13 @@ const stuffTable = {
                         console.log('Ошибка в процессе получения данных', xhr.status, xhr.statusText);
                         return;
                     } 
-                this.settings.table = xhr.responseXML.getElementsByTagName('Table');
+                //Создаем функцию, чтобы данные успели передаться            
+                let callTable = xhr.responseXML.getElementsByTagName('Table');
+                getDataXML (callTable);
                 };
-        xhr.send();
+        function getDataXML (data) {
+                this.settings.table = data;
+    });
     },
 };
 
