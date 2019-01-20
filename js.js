@@ -39,8 +39,12 @@ const stuffTable = {
             //Создаем яцейки
             for (let cell = 0; cell < cellBody.length; cell++) {
                 let cellContent = cellBody[cell].textContent;
+                let cellData = cellBody[cell].getElementsByTagName('Data');    
                 const td = document.createElement('td');
                 td.textContent = cellContent;
+                if (cellData.attributes.value === 'DataTime') {
+                    td.type = 'datetime';
+                }
                 tr.appendChild(td);
                 /*
                 const td = document.createElement('td');
@@ -49,25 +53,22 @@ const stuffTable = {
             }
         }
     },
-    
+    //Получет эвент по клику и меняет кол-во строк, выводимых на экран
     tableSizeEventHandlers() {
                 
         if (event.target.tagName !== 'SPAN') {
             return;
         } 
-        
-        
         this.changeNumberOfRow(event.target.dataset.size);
-        console.log(this.settings.rowOnPage);
         this.clearTable ();
         this.renderTable ();
     },
-    
+    //Меняет переменную rowOnPage в зависимости от клика пользователя
     changeNumberOfRow(size) {
         return this.settings.rowOnPage = +size; 
         
     },
-    
+    //Обнуляет таблицу
     clearTable () {
         this.settings.tableElement.innerHTML = '';
     
