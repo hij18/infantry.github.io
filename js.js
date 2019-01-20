@@ -28,6 +28,7 @@ const stuffTable = {
                 stuffTable.settings.table = this;
                 stuffTable.renderTableHead ();
                 stuffTable.renderTable ();
+                stuffTable.changeNumberOfPage ();
         });
 
         
@@ -90,6 +91,7 @@ const stuffTable = {
         }
         this.settings.currentNumOfRow += this.settings.rowOnPage;
         this.settings.currentPage++;
+        this.settings.changeCurrentPage ();
         this.changeNumberOfPage ();
         this.clearTable ();
         this.renderTable ();
@@ -102,6 +104,7 @@ const stuffTable = {
         }
         this.settings.currentNumOfRow -= this.settings.rowOnPage;
         this.settings.currentPage--;
+        this.settings.changeCurrentPage ();
         this.changeNumberOfPage ();
         this.clearTable ();
         this.renderTable ();
@@ -126,6 +129,10 @@ const stuffTable = {
         .textContent = this.settings.namberOfPage;
     },
     
+    changeCurrentPage () {
+        .getElementById('navCurent')
+        .textContent = this.settings.currentPage;
+    },
 
     
     //Создаем заголовки таблицы
