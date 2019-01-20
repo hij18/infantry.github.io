@@ -17,16 +17,23 @@
     font-weight: bold;
       }
 
+      #navigation,
       #tableSize {
     display: inline-block;
-    
+    margin-top: 20px;
       }
 
+      .navButton,
       .sizeChoose {
     display: inline-block;
     width: 50px;
     height: 50px;
-    border: solid 1px yellow;
+    border: solid 1px rgb(255,221,45);
+      }
+      
+      .navButton:hover,
+      .sizeChoose:hover {
+          background: rgb(192,192,192);
       }
     </style>
 </head>
@@ -37,6 +44,12 @@
         <thead id="tableHead"></thead>
         <tbody id="tableBody"></tbody>
     </table>
+    
+    <div id="navigation">
+        <div class="navButton" id="prev">Назад</div>
+        Страница<span id="navCurent">1</span> из <span id="navAll">5</span>
+        <div class="navButton"id="next">Вперед</div>
+    </div>
     
     <div id="tableSize">
         <span class="sizeChoose" data-size="10">10</span>
