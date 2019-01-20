@@ -8,16 +8,15 @@ const stuffTable = {
         rowInTable: 10,
         cellInTable: 10,
         rowOnPage: 10,
+        //Место для хранения данных из XML
+        table: null,
     },
-    //Место для хранения данных из XML
-    table: {     
-    },
-    
+        
  //Строит таблицу по заданым параметрам
     init () {
         this.takeDataFromXML ();
-        this.renderTableHead (this.takeDataFromXML ());
-        this.renderTable (this.takeDataFromXML ());
+        this.renderTableHead ();
+        this.renderTable ();
         
         document
         .getElementById('tableSize')
@@ -84,7 +83,7 @@ const stuffTable = {
                         console.log('Ошибка в процессе получения данных', xhr.status, xhr.statusText);
                         return;
                     } 
-                return xhr.responseXML;
+                this.settings.table = xhr.responseXML.getElementsByTagName('Table');
                 };
     },
 };
