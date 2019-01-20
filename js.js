@@ -30,14 +30,21 @@ const stuffTable = {
     
  //Строит таблицу по параметрам из settings.    
     renderTable () {
+        let allRow = this.settings.table[0].getElementsByTagName('Row');
         //Создаем строки
-        for (let row = 0; row < this.settings.rowOnPage; row++) {
+        for (let row = 1; row < this.settings.rowOnPage; row++) {
             const tr = document.createElement('tr');
             this.settings.tableElement.appendChild(tr);
             //Создаем яцейки
             for (let cell = 0; cell < this.settings.cellInTable; cell++) {
+                let cellContent = cellHead[cell].textContent;
+                const td = document.createElement('td');
+                td.textContent = cellContent;
+                tr.appendChild(td);
+                /*
                 const td = document.createElement('td');
                 tr.appendChild(td);
+                */
             }
         }
     },
@@ -67,12 +74,10 @@ const stuffTable = {
     
     //Создаем заголовки таблицы
     renderTableHead () {
-        console.log(this.settings.table);
         let row = this.settings.table[0].getElementsByTagName('Row');
-        console.log(row);
         let cellHead = row[0].getElementsByTagName('Cell');
         const tr = document.createElement('tr');
-        this.settings.tableElement.appendChild(tr);
+        this.settings.tableHead.appendChild(tr);
         for (let cell = 0; cell < cellHead.length; cell++) {
             let cellContent = cellHead[cell].textContent;
             const td = document.createElement('td');
