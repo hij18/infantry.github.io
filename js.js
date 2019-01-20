@@ -74,7 +74,9 @@ const stuffTable = {
         const tr = document.createElement('tr');
         this.settings.tableElement.appendChild(tr);
         for (let cell = 0; cell < cellHead.length; cell++) {
-            const td = document.createElement('td').textContent = cellHead[cell].textContent;
+            let cellContent = cellHead[cell].textContent;
+            const td = document.createElement('td');
+            td.textContent = cellContent;
             tr.appendChild(td);
         }
     },
