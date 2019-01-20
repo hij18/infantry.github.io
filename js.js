@@ -89,7 +89,7 @@ const stuffTable = {
             document.getElementById('next').disabled = true;
         }
         this.settings.currentNumOfRow += this.settings.rowOnPage;
-        this.settings.currentPage += this.settings.currentPage;
+        this.settings.currentPage++;
         this.changeNumberOfPage ();
         this.clearTable ();
         this.renderTable ();
@@ -101,7 +101,7 @@ const stuffTable = {
             document.getElementById('prev').disabled = true;
         }
         this.settings.currentNumOfRow -= this.settings.rowOnPage;
-        this.settings.currentPage -= this.settings.currentPage;
+        this.settings.currentPage--;
         this.changeNumberOfPage ();
         this.clearTable ();
         this.renderTable ();
