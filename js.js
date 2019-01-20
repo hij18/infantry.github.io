@@ -37,7 +37,7 @@ const stuffTable = {
             const tr = document.createElement('tr');
             this.settings.tableElement.appendChild(tr);
             //Создаем яцейки
-            for (let cell = 0; cell < this.settings.cellInTable; cell++) {
+            for (let cell = 0; cell < cellBody.length;; cell++) {
                 let cellContent = cellBody[cell].textContent;
                 const td = document.createElement('td');
                 td.textContent = cellContent;
