@@ -78,14 +78,15 @@ const stuffTable = {
             if(xhr.readyState !== 4) {
                 return; //Выход
                 }
+                //Создаем функцию, чтобы данные успели передаться            
+                let callTable = xhr.responseXML.getElementsByTagName('Table');
+                getDataXML (callTable);
 
                 if (xhr.status !== 200) {
                         console.log('Ошибка в процессе получения данных', xhr.status, xhr.statusText);
                         return;
                     } 
-                //Создаем функцию, чтобы данные успели передаться            
-                let callTable = xhr.responseXML.getElementsByTagName('Table');
-                getDataXML (callTable);
+
                 };
         function getDataXML (data) {
                 this.settings.table = data;
