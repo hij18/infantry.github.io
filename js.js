@@ -73,7 +73,7 @@ const stuffTable = {
     takeDataFromXML (callback) {
         let xhr = new XMLHttpRequest();
         xhr.open('GET', './collaborators.xml', true);
-        xhr.send();
+        
         xhr.onreadystatechange = function () {
         console.log(xhr.readyState);
                   
@@ -86,7 +86,7 @@ const stuffTable = {
                     } 
                 callback.call (xhr.responseXML.getElementsByTagName('Table'));
                 };
-        
+        xhr.send();
     },
 };
 
