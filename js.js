@@ -11,6 +11,8 @@ const stuffTable = {
         rowOnPage: 10,
         //Место для хранения данных из XML
         table: null,
+        //Колличество строк, которое сейчас выведено на экран
+        currentNumOfRow: 0;
         
     },
         
@@ -26,26 +28,36 @@ const stuffTable = {
         document
         .getElementById('tableSize')
         .addEventListener('click', event => this.tableSizeEventHandlers(event));
+        
+        document
+        .getElementById('prev')
+        .addEventListener('click', event => this.prevNavigationEventHandlers(event));
+        
+        document
+        .getElementById('next')
+        .addEventListener('click', event => this.nextNavigationEventHandlers(event));
     },
     
  //Строит таблицу по параметрам из settings.    
     renderTable () {
         let allRow = this.settings.table[0].getElementsByTagName('Row');
         //Создаем строки
-        for (let row = 1; row < this.settings.rowOnPage; row++) {
+        for (let row = this.settings.currentNumOfRow+1; row < this.settings.rowOnPage+this.settings.currentNumOfRow; row++) {
             let cellBody = allRow[row].getElementsByTagName('Cell');
             const tr = document.createElement('tr');
             this.settings.tableElement.appendChild(tr);
+            this.settings.currentNumOfRow = row;
             //Создаем яцейки
             for (let cell = 0; cell < cellBody.length; cell++) {
                 let cellContent = cellBody[cell].textContent;
                 let cellData = cellBody[cell].getElementsByTagName('Data');    
                 const td = document.createElement('td');
                 td.textContent = cellContent;
-                 
+                /*
                 if (cellData[0].getAttribute('ss:Type') === 'DateTime') {
                     td.setAttribute('type' ,'datetime');
                 }
+                */
                 
                 tr.appendChild(td);
 
@@ -62,6 +74,23 @@ const stuffTable = {
         this.clearTable ();
         this.renderTable ();
     },
+    
+    //Переключает страницы таблицы назад
+    prevNavigationEventHandlers () {
+        if (this.settings.currentNumOfRow === 500) {
+            document.getElementById('next').disabled = true;
+        }
+        this.settings.currentNumOfRow += this.settings.rowOnPage;
+    }, 
+    
+    //Переключает страницы таблицы вперед
+    prevNavigationEventHandlers () {
+        if (this.settings.currentNumOfRow === 0) {
+            document.getElementById('prev').disabled = true;
+        }
+        this.settings.currentNumOfRow -= this.settings.rowOnPage;
+    }, 
+    
     //Меняет переменную rowOnPage в зависимости от клика пользователя
     changeNumberOfRow(size) {
         return this.settings.rowOnPage = +size; 
@@ -101,7 +130,7 @@ const stuffTable = {
                 if (xhr.status !== 200) {
                         console.log('Ошибка в процессе получения данных', xhr.status, xhr.statusText);
                         return;
-                    } 
+                    }
                 callback.call (xhr.responseXML.getElementsByTagName('Table'));
                 };
         xhr.send();
