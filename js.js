@@ -91,7 +91,7 @@ const stuffTable = {
         }
         this.settings.currentNumOfRow += this.settings.rowOnPage;
         this.settings.currentPage++;
-        this.settings.changeCurrentPage ();
+        this.changeCurrentPage ();
         this.changeNumberOfPage ();
         this.clearTable ();
         this.renderTable ();
@@ -104,7 +104,7 @@ const stuffTable = {
         }
         this.settings.currentNumOfRow -= this.settings.rowOnPage;
         this.settings.currentPage--;
-        this.settings.changeCurrentPage ();
+        this.changeCurrentPage ();
         this.changeNumberOfPage ();
         this.clearTable ();
         this.renderTable ();
