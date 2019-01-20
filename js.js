@@ -68,7 +68,8 @@ const stuffTable = {
     },
     
     //
-    takeDataFromXML () {
+    takeDataFromXML (callback) {
+        function getDataXML (callback) {
         let xhr = new XMLHttpRequest();
         xhr.open('GET', './collaborators.xml', true);
         xhr.send();
@@ -78,19 +79,16 @@ const stuffTable = {
             if(xhr.readyState !== 4) {
                 return; //Выход
                 }
-                //Создаем функцию, чтобы данные успели передаться            
-                let callTable = xhr.responseXML.getElementsByTagName('Table');
-                getDataXML (callTable);
-
                 if (xhr.status !== 200) {
                         console.log('Ошибка в процессе получения данных', xhr.status, xhr.statusText);
                         return;
                     } 
-
+                callback.call (xhr.responseXML.getElementsByTagName('Table'));
                 };
-        function getDataXML (data) {
-                this.settings.table = data;
-    };
+        }
+        getDataXML (function () {
+                stuffTable.settings.table = this;
+    });
     },
 };
 
