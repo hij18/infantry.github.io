@@ -14,7 +14,9 @@ const stuffTable = {
         
  //Строит таблицу по заданым параметрам
     init () {
-        this.takeDataFromXML ();
+        this.takeDataFromXML (function () {
+                stuffTable.settings.table = this;
+        });
         this.renderTableHead ();
         this.renderTable ();
         
@@ -69,7 +71,6 @@ const stuffTable = {
     
     //
     takeDataFromXML (callback) {
-        function getDataXML (callback) {
         let xhr = new XMLHttpRequest();
         xhr.open('GET', './collaborators.xml', true);
         xhr.send();
@@ -85,10 +86,7 @@ const stuffTable = {
                     } 
                 callback.call (xhr.responseXML.getElementsByTagName('Table'));
                 };
-        }
-        getDataXML (function () {
-                stuffTable.settings.table = this;
-    });
+        
     },
 };
 
