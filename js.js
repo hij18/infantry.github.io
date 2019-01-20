@@ -44,7 +44,7 @@ const stuffTable = {
                 td.textContent = cellContent;
                  
                 if (cellData[0].getAttribute('ss:Type') === 'DateTime') {
-                    td.type = 'datetime';
+                    td.setAttribute('type' ,'datetime');
                 }
                 
                 tr.appendChild(td);
