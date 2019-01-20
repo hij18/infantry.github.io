@@ -76,7 +76,7 @@ const stuffTable = {
     },
     
     //Переключает страницы таблицы назад
-    prevNavigationEventHandlers () {
+    nextNavigationEventHandlers () {
         if (this.settings.currentNumOfRow === 500) {
             document.getElementById('next').disabled = true;
         }
