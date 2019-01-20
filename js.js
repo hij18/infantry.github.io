@@ -33,11 +33,12 @@ const stuffTable = {
         let allRow = this.settings.table[0].getElementsByTagName('Row');
         //Создаем строки
         for (let row = 1; row < this.settings.rowOnPage; row++) {
+            let cellBody = allRow[row].getElementsByTagName('Cell');
             const tr = document.createElement('tr');
             this.settings.tableElement.appendChild(tr);
             //Создаем яцейки
             for (let cell = 0; cell < this.settings.cellInTable; cell++) {
-                let cellContent = cellHead[cell].textContent;
+                let cellContent = cellBody[cell].textContent;
                 const td = document.createElement('td');
                 td.textContent = cellContent;
                 tr.appendChild(td);
