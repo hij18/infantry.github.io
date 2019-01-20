@@ -22,7 +22,7 @@ const stuffTable = {
         
     },
         
- //Строит таблицу по заданым параметрам
+ //Котролирует все. 
     init () {
         this.takeDataFromXML (function () {
                 stuffTable.settings.table = this;
@@ -89,7 +89,7 @@ const stuffTable = {
             document.getElementById('next').disabled = true;
         }
         this.settings.currentNumOfRow += this.settings.rowOnPage;
-        his.settings.currentPage += this.settings.currentPage;
+        this.settings.currentPage += this.settings.currentPage;
         this.changeNumberOfPage ();
         this.clearTable ();
         this.renderTable ();
@@ -97,7 +97,7 @@ const stuffTable = {
     
     //Переключает страницы таблицы вперед
     prevNavigationEventHandlers () {
-        if (this.settings.currentNumOfRow === 0) {
+        if (this.settings.currentNumOfRow === 10) {
             document.getElementById('prev').disabled = true;
         }
         this.settings.currentNumOfRow -= this.settings.rowOnPage;
