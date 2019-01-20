@@ -5,11 +5,13 @@ const stuffTable = {
     settings: {
         tableElement: document.getElementById('tableBody'),
         tableHead: document.getElementById('tableHead'),
+        tableHeadName: null,
         rowInTable: 10,
         cellInTable: 10,
         rowOnPage: 10,
         //Место для хранения данных из XML
         table: null,
+        
     },
         
  //Строит таблицу по заданым параметрам
@@ -68,6 +70,13 @@ const stuffTable = {
         console.log(this.settings.table);
         let row = this.settings.table[0].getElementsByTagName('Row');
         console.log(row);
+        let cellHead = row[0].getElementsByTagName('Cell');
+        const tr = document.createElement('tr');
+        this.settings.tableElement.appendChild(tr);
+        for (let cell = 0; cell < cellHead.length; cell++) {
+            const td = document.createElement('td').textContent = cellHead[cell].textContent;
+            tr.appendChild(td);
+        }
     },
     
     //
