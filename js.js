@@ -130,6 +130,7 @@ const stuffTable = {
     },
     
     changeCurrentPage () {
+        document
         .getElementById('navCurent')
         .textContent = this.settings.currentPage;
     },
