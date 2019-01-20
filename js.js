@@ -66,7 +66,7 @@ const stuffTable = {
     //Создаем заголовки таблицы
     renderTableHead () {
         console.log(this.settings.table);
-        let row = this.settings.table.firstChild;
+        let row = this.settings.table[0].firstChild;
         console.log(row);
     },
     
