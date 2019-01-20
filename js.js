@@ -16,9 +16,10 @@ const stuffTable = {
     init () {
         this.takeDataFromXML (function () {
                 stuffTable.settings.table = this;
+                stuffTable.renderTableHead ();
+                stuffTable.renderTable ();
         });
-        this.renderTableHead ();
-        this.renderTable ();
+
         
         document
         .getElementById('tableSize')
