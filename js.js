@@ -89,7 +89,7 @@ const stuffTable = {
                 };
         function getDataXML (data) {
                 this.settings.table = data;
-    });
+    };
     },
 };
 
