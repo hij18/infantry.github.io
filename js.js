@@ -41,11 +41,12 @@ const stuffTable = {
                 let cellContent = cellBody[cell].textContent;
                 let cellData = cellBody[cell].getElementsByTagName('Data');    
                 const td = document.createElement('td');
-                td.textContent = cellContent;     
-                if (cellData[0].getAttribute('ss:Type') === 'DataTime') {
+                td.textContent = cellContent;
+                 
+                if (cellData[0].getAttribute('ss:Type') === 'DateTime') {
                     td.type = 'datetime';
                 }
-            
+                
                 tr.appendChild(td);
 
             }
