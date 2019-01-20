@@ -81,6 +81,7 @@ const stuffTable = {
             document.getElementById('next').disabled = true;
         }
         this.settings.currentNumOfRow += this.settings.rowOnPage;
+        this.renderTable ();
     }, 
     
     //Переключает страницы таблицы вперед
@@ -89,6 +90,7 @@ const stuffTable = {
             document.getElementById('prev').disabled = true;
         }
         this.settings.currentNumOfRow -= this.settings.rowOnPage;
+        this.renderTable ();
     }, 
     
     //Меняет переменную rowOnPage в зависимости от клика пользователя
