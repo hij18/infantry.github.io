@@ -13,6 +13,7 @@ const stuffTable = {
         table: null,
         //Колличество строк, которое сейчас выведено на экран
         currentNumOfRow: 0,
+        countNumOfRow: 0,
         
     },
         
@@ -46,7 +47,7 @@ const stuffTable = {
             let cellBody = allRow[row].getElementsByTagName('Cell');
             const tr = document.createElement('tr');
             this.settings.tableElement.appendChild(tr);
-            this.settings.currentNumOfRow = row;
+            this.settings.countNumOfRow = row;
             //Создаем яцейки
             for (let cell = 0; cell < cellBody.length; cell++) {
                 let cellContent = cellBody[cell].textContent;
@@ -63,6 +64,7 @@ const stuffTable = {
 
             }
         }
+        this.settings.currentNumOfRow = this.settings.countNumOfRow;
     },
     //Получет эвент по клику и меняет кол-во строк, выводимых на экран
     tableSizeEventHandlers() {
