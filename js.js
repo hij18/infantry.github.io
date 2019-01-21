@@ -49,7 +49,7 @@ const stuffTable = {
     renderTable () {
         let allRow = this.settings.table[0].getElementsByTagName('Row');
         //Создаем строки
-        for (let row = this.settings.currentNumOfRow+1; row < this.settings.rowOnPage+this.settings.currentNumOfRow; row++) {
+        for (let row = this.settings.currentNumOfRow+1; row <= this.settings.rowOnPage+this.settings.currentNumOfRow; row++) {
             let cellBody = allRow[row].getElementsByTagName('Cell');
             const tr = document.createElement('tr');
             this.settings.tableElement.appendChild(tr);
@@ -92,6 +92,7 @@ const stuffTable = {
         if (this.settings.currentPage === this.settings.namberOfPage) {
             return;
         }
+        
         this.settings.currentNumOfRow += this.settings.rowOnPage;
         this.settings.currentPage++;
         this.changeCurrentPage ();
