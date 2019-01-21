@@ -11,9 +11,9 @@ const stuffTable = {
         rowOnPage: 10,
         //Место для хранения данных из XML
         table: null,
-        //Колличество строк, которое сейчас выведено на экран
+        //Номер первой строки
         currentNumOfRow: 0,
-        //Счетчик строк в цикле вывода таблицы
+        //Номер последней строки 
         countNumOfRow: 0,
         //Колличесвто страниц таблицы с учетом строк на странице
         namberOfPage: null,
@@ -70,7 +70,7 @@ const stuffTable = {
 
             }
         }
-        this.settings.currentNumOfRow = this.settings.countNumOfRow;
+        
     },
     //Получет эвент по клику и меняет кол-во строк, выводимых на экран
     tableSizeEventHandlers() {
@@ -92,8 +92,7 @@ const stuffTable = {
         if (this.settings.currentPage === this.settings.namberOfPage) {
             return;
         }
-        
-        this.settings.currentNumOfRow += this.settings.rowOnPage;
+        this.settings.currentNumOfRow = this.settings.countNumOfRow;
         this.settings.currentPage++;
         this.changeCurrentPage ();
         this.changeNumberOfPage ();
